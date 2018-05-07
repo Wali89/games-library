@@ -1,0 +1,6 @@
+<p> Here are your games, <%= @user.username %>
+<% @user.games.each do |tweet| %>
+  <div>
+    <%= game.name %>
+  </div>
+<% end %>
