@@ -1,0 +1,14 @@
+<h1>Add a New Game</h1>
+
+<form action="/games" method="POST">
+
+  <label> Game Name </label>
+  <input type="text" name="Name"> </br>
+
+  <label> Platforms </label>
+  <% Platform.all.each do |platform| %>
+    <input id="<%= platform.name %>" type="checkbox" name="platforms[]" value="<%= platform.id %>">
+  <% end %>
+
+  <input type="submit" value="Create">
+</form>
