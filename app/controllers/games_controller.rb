@@ -10,4 +10,8 @@ class GamesController < ApplicationController
     @game = Game.find_by_slug(params[:slug])
     erb :'games/show'
   end
+
+  get '/games/new' do
+    erb :'/games/new'
+  end
 end

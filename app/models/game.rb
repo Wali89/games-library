@@ -8,7 +8,7 @@ class Game < ActiveRecord::Base
   end
 
   def self.find_by_slug(slug)
-    Song.all.find{|song| song.slug == slug}
+    Game.all.find{|game| game.slug == slug}
   end
 
   def self.valid_params?(params)

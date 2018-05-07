@@ -1,5 +1,5 @@
 <h1> <%= @game.name %> </h1>
 
 <% @game.platforms.each do |platform| %>
-  <a href="/genres/<%= platform.slug %>"><%= platform.name %> </a>
+  <a href="/platforms/<%= platform.slug %>"><%= platform.name %> </a>
 <% end %>
