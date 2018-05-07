@@ -14,4 +14,13 @@ class GamesController < ApplicationController
   get '/games/new' do
     erb :'/games/new'
   end
+
+  post '/games' do
+    @game = Game.create(:name => params["Name"])
+    @game.platform_ids = params[:platforms]
+    @game.save
+
+    redirect("/games/#{@game.slug}")
+  end
+
 end
