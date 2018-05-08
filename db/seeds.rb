@@ -1,5 +1,5 @@
-ps4 = Platform.create(:name => "Playstation 4")
-gc = Platform.create(:name => "GameCube")
+@user = User.create(:username => "Test", :password_digest => "1234")
+ps4 = Device.create(:name => "Playstation 4", :company => "Sony")
+gc = Device.create(:name => "GameCube", :company => "Nintendo")
 
-@spyro = Game.create(:name => "Spyro")
-@spyro.platform_ids = ps4.id 
+@spyro = Game.create(:name => "Spyro", :device_id => ps4.id)

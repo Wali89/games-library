@@ -1,6 +1,5 @@
 class DevicesController < ApplicationController
 
-
   get '/devices' do
     redirect_if_not_logged_in
     @devices = Device.all
@@ -27,7 +26,7 @@ class DevicesController < ApplicationController
       redirect "/devices/#{@device.id}/edit?error=invalid device"
     end
     @device.update(params.select{|k|k=="name" || k=="company"})
-    
+
   end
 
   get "/devices/:id" do
