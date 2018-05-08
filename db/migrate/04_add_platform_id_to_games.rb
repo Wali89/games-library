@@ -1,5 +1,5 @@
-class AddPlatformsIdGames < ActiveRecord::Migration
+class AddPlatformIdtoGames < ActiveRecord::Migration[5.1]
   def change
-    add_column :golf_clubs, :golf_bag_id, :integer
+    add_column :games, :platform_id, :integer
   end
 end
