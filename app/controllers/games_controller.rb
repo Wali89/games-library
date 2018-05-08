@@ -44,10 +44,5 @@ class GamesController < ApplicationController
     Game.create(params)
     redirect "/games"
   end
-end
-
-
-
-
 
 end

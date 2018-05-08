@@ -26,7 +26,8 @@ class DevicesController < ApplicationController
     unless Device.valid_params?(params)
       redirect "/devices/#{@device.id}/edit?error=invalid device"
     end
-    @device.update(params.select{|k|=="name" || k=="company"})
+    @device.update(params.select{|k|k=="name" || k=="company"})
+    
   end
 
   get "/devices/:id" do
@@ -44,4 +45,5 @@ class DevicesController < ApplicationController
     Device.create(params)
     redirect "/devices"
   end
+
 end

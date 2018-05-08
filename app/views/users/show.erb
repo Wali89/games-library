@@ -1,6 +1,6 @@
 <p> Here are your games, <%= @user.username %>
-<% @user.games.each do |tweet| %>
-  <div>
-    <%= game.name %>
-  </div>
+<% @user.games.each do |device| %>
+  <ul>
+    <li><a href="/devices/<%= device.id %>"><%= device.name %></a></li>
+  </ul>
 <% end %>
