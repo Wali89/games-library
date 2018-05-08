@@ -1,15 +1,15 @@
 <h1>Edit <%= @game.name %></h1>
 
-<form action="/games/<%= @game.slug %>" method="POST">
-  <input type="hidden" name="_method" value="PATCH">
+<form action="/games/<%= @game.id %>" method="POST">
+  <label> Game Name </label>
+  <input type="text" name="name" value="<%= @game.name %>"> </br>
 
-  <label for="name">Name</label>
-  <input type="text" name="game[name]" id="name" value="<%= @game.name %>">
+  <label> Which device is this game on? </label>
+  <select name="device_id">
+    <% current_user.devices.each do |game| %>
+      <option value=<%= device.id %> <%= "selected" if device.id==@game.device.id %> ><%= device.name %></option>
+    <% end %>
+  </select>
 
-  <% Platform.all.each do |platform| %>
-    <label><%= platform.name %></label>
-    <input type="checkbox" name="genres[]" value="<%= platform.id %>" id="<%= platform.name %>" <%='checked' if @game.platforms.include?(platform) %>>
-  <% end %>
-
-  <input type="submit" value="Save">
+  <input type="submit" value="Update">
 </form>

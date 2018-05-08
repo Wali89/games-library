@@ -13,15 +13,24 @@ class GamesController < ApplicationController
     erb :'/games/new'
   end
 
-  get "/clubs/:id/edit" do
-    redirect_if_not_logged_in 
+  get "/games/:id/edit" do
+    redirect_if_not_logged_in
     @error_message = params[:error]
-    @club = GolfClub.find(params[:id])
-    erb :'golf_clubs/edit'
+    @game = Game.find(params[:id])
+    erb :'games/edit'
   end
 
-  
-  get '/games/:slug' do
+  post "/games/:id" do
+    redirect_if_not_logged_in
+    @game = Game.find_by_slug(params[:slug])
+    unless Game.valid_params?(params)
+      redirect "/games/#{@game.id}/edit?error=invalid game"
+    end
+    @game.update(params.select{|k|k=="name" || k=="device_id"})
+    redirect "/clubs/#{@club.id}"
+  end
+
+  get '/games/:id' do
     @game = Game.find_by_slug(params[:slug])
     erb :'games/show'
   end
