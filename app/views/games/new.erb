@@ -5,11 +5,12 @@
   <label> Game Name </label>
   <input type="text" name="Name"> </br>
 
-  <label> Platforms: </label> <br>
-  <% Platform.all.each do |platform| %>
-    <%= platform.name %>
-    <input id="<%= game.platform_ids %>" type="checkbox" name="game[platform_ids][]" value="<%= platform.id %>"> <br>
-  <% end %>
+  <label> Devices: </label>
+  <select name="device_id">
+    <% current_user.devices.each do |device| %>
+         <option value=<%= device.id %>><%= device.name %></option>
+       <% end %>
+     </select>
 
   <input type="submit" value="Create">
 </form>
