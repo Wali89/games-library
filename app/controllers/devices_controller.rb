@@ -26,13 +26,22 @@ class DevicesController < ApplicationController
     unless Device.valid_params?(params)
       redirect "/devices/#{@device.id}/edit?error=invalid device"
     end
-    @device.update(param)
+    @device.update(params.select{|k|=="name" || k=="company"})
   end
 
-  get "/devices/:id" do 
-    redirect_if_not_logged_in 
+  get "/devices/:id" do
+    redirect_if_not_logged_in
     @device = Device.find(params[:id])
     erb :'devices/show'
   end
 
+  post "/devices" do
+    redirect_if_not_logged_in
+
+    unless Device.valid_params?(params)
+      redirect "/devices/new?error=invalid device"
+    end
+    Device.create(params)
+    redirect "/devices"
+  end
 end
