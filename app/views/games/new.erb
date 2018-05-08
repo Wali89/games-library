@@ -8,7 +8,7 @@
   <label> Platforms: </label> <br>
   <% Platform.all.each do |platform| %>
     <%= platform.name %>
-    <input id="<%= game.platform_ids %>" type="checkbox" name="platforms[]" value="<%= platform.id %>"> <br>
+    <input id="<%= game.platform_ids %>" type="checkbox" name="game[platform_ids][]" value="<%= platform.id %>"> <br>
   <% end %>
 
   <input type="submit" value="Create">
