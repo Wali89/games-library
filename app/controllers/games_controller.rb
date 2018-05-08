@@ -42,7 +42,7 @@ class GamesController < ApplicationController
       redirect "/games/new?error=invalid game"
     end
     Game.create(params)
-    redirect "/clubs"
+    redirect "/games"
   end
 end
 
