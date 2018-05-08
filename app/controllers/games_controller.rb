@@ -31,20 +31,18 @@ class GamesController < ApplicationController
   end
 
   get '/games/:id' do
-    @game = Game.find_by_slug(params[:slug])
+    redirect_if_not_logged_in
+    @game = Game.find_by_slug(params[:id])
     erb :'games/show'
   end
 
   post '/games' do
-    if logged_in?
-      if params[] == ""
-        redirect
-        @game = Game.create(:name => params["Name"])
-        @game.platform_ids = params[:platforms]
-        @game.save
-
-        redirect("/games/#{@game.slug}")
-      end
+    redirect_if_not_logged_in
+    unless Game.valid_params?(params)
+      redirect "/games/new?error=invalid game"
+    end
+    Game.create(params)
+    redirect "/clubs"
   end
 end
 
