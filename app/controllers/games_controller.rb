@@ -30,12 +30,14 @@ class GamesController < ApplicationController
     if logged_in?
       if params[] == ""
         redirect
-      @game = Game.create(:name => params["Name"])
-      @game.platform_ids = params[:platforms]
-      @game.save
+        @game = Game.create(:name => params["Name"])
+        @game.platform_ids = params[:platforms]
+        @game.save
 
-      redirect("/games/#{@game.slug}")
+        redirect("/games/#{@game.slug}")
+      end
   end
+end
 
 
 

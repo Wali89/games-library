@@ -13,8 +13,26 @@ class DevicesController < ApplicationController
     erb :'devices/new'
   end
 
-  get '/devices/:slug' do
-    @devices = device.find_by_slug(params[:slug])
+  get "/devices/:id/edit" do
+    redirect_if_not_logged_in
+    @error_message = params[:error]
+    @devices = Device.find(params[:id])
+    erb :'devices/edit'
+  end
+
+  post "/devices/:id" do
+    redirect_if_not_logged_in
+    @device = Device.find(params[:id])
+    unless Device.valid_params?(params)
+      redirect "/devices/#{@device.id}/edit?error=invalid device"
+    end
+    @device.update(param)
+  end
+
+  get "/devices/:id" do 
+    redirect_if_not_logged_in 
+    @device = Device.find(params[:id])
     erb :'devices/show'
   end
+
 end
