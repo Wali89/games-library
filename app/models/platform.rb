@@ -1,7 +1,7 @@
 class Platform < ActiveRecord::Base
-  belongs_to :user
   has_many :game_platforms
   has_many :games, :through => :game_platforms
+  has_many :users, :through => :games
   
   def slug
     name.downcase.gsub(" ","-")

@@ -6,13 +6,13 @@ class GamesController < ApplicationController
     erb :'games/index'
   end
 
+  get '/games/new' do
+    erb :'/games/new'
+  end
+  
   get '/games/:slug' do
     @game = Game.find_by_slug(params[:slug])
     erb :'games/show'
-  end
-
-  get '/games/new' do
-    erb :'/games/new'
   end
 
   post '/games' do
@@ -22,5 +22,9 @@ class GamesController < ApplicationController
 
     redirect("/games/#{@game.slug}")
   end
+
+
+
+
 
 end

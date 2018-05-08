@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 4) do
 
   create_table "game_platforms", force: :cascade do |t|
-    t.integer "platform_id"
     t.integer "game_id"
+    t.integer "platform_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 4) do
     t.integer "user_id"
   end
 
-  create_table "platform", force: :cascade do |t|
+  create_table "platforms", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
   end
