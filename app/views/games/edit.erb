@@ -4,10 +4,13 @@
   <label> Game Name </label>
   <input type="text" name="name" value="<%= @game.name %>"> </br>
 
-  <label> Which device is this game on? </label>
-  <select name="device_id">
-    <% current_user.devices.each do |game| %>
-      <option value=<%= device.id %> <%= "selected" if device.id==@game.device.id %> ><%= device.name %></option>
+  <label> Number of Players: </label>
+  <input type="text" name="players" value="<%= @game.players %>"> </br>
+
+  <label> Which device is this game on? </label> <br>
+  <label> Devices: </label>
+    <% Device.all.each do |device| %>
+    <%= device.name %> <input id="<%= device.id %>" type="checkbox" name="device_id" value="<%= device.id %>"><br>
     <% end %>
   </select>
 

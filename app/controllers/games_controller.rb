@@ -21,12 +21,12 @@ class GamesController < ApplicationController
 
   post "/games/:id" do
     redirect_if_not_logged_in
-    @game = Game.find_by_slug(params[:slug])
+    @game = Game.find(params[:id])
     unless Game.valid_params?(params)
       redirect "/games/#{@game.id}/edit?error=invalid game"
     end
-    @game.update(params.select{|k|k=="name" || k=="device_id"})
-    redirect "/clubs/#{@club.id}"
+    @game.update(params.select{|k|k=="name" || k=="device_id" || k=="players"})
+    redirect "/games/#{@game.id}"
   end
 
   get '/games/:id' do
@@ -40,7 +40,10 @@ class GamesController < ApplicationController
     unless Game.valid_params?(params)
       redirect "/games/new?error=invalid game"
     end
-    Game.create(params)
+    @game = Game.create(:name => params["name"])
+    @game.players = params["players"]
+    @game.device_id = params["device_id"]
+    @game.save
     redirect "/games"
   end
 

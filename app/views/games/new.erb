@@ -2,15 +2,19 @@
 
 <form action="/games" method="POST">
 
-  <label> Game Name </label>
-  <input type="text" name="Name"> </br>
+  <label> Game Name: </label>
+  <input type="text" name="name"> </br>
 
-  <label> Devices: </label>
-  <select name="device_id">
-    <% current_user.devices.each do |device| %>
-         <option value=<%= device.id %>><%= device.name %></option>
-       <% end %>
-     </select>
+
+  <label> Number of Players: </label>
+  <input type="text" name="players"> </br>
+
+
+  <label> Which device is the game on? </label>
+    <% Device.all.each do |device| %>
+    <%= device.name %> <input id="<%= device.id %>" type="checkbox" name="device_id" value="<%= device.id %>"><br>
+    <% end %>
+  </select>
 
   <input type="submit" value="Create">
 </form>
