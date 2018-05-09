@@ -41,7 +41,7 @@ class DevicesController < ApplicationController
     unless Device.valid_params?(params)
       redirect "/devices/new?error=invalid device"
     end
-    Device.create(params)
+    Device.create(:name => params["name"], :company => params["company"])
     redirect "/devices"
   end
 
