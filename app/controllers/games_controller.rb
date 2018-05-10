@@ -14,9 +14,9 @@ class GamesController < ApplicationController
 
   get "/games/:id/edit" do
     redirect_if_not_logged_in
-
+    @game = Game.find(params[:id])
     @error_message = params[:error]
-    if game = curent_user.games.find_by(params[:id])
+    if @game = curent_user.games.find_by(params[:id])
     erb :'games/edit'
     else
       redirect '/games'
