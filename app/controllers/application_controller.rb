@@ -16,8 +16,8 @@ class ApplicationController < Sinatra::Base
 
   helpers do
 
-    def logged_in?
-      !!current_user
+    def logged_in? 
+      !!session[:user_id]
     end
 
     def current_user
@@ -29,16 +29,7 @@ class ApplicationController < Sinatra::Base
         redirect "/login?error=You have to be logged in to do that"
       end
     end
-
-    def login(un, pw)
-      user = User.find_by(:username => un)
-      if user && user.authenticate(pw)
-        session[:username] = user.username
-      else
-        redirect '/login'
-      end
-    end
-
+    
     def logout!
       session.clear
     end
