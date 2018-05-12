@@ -1,5 +1,4 @@
 class Game < ActiveRecord::Base
-  has_one :device
   belongs_to :device
   
   def self.valid_params?(params)
