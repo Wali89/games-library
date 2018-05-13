@@ -16,7 +16,7 @@ class GamesController < ApplicationController
     redirect_if_not_logged_in
     @game = Game.find(params[:id])
     @error_message = params[:error]
-    if @game = curent_user.games.find_by(params[:id])
+    if @game = current_user.games.find_by(params[:id])
     erb :'games/edit'
     else
       redirect '/games'
@@ -44,9 +44,7 @@ class GamesController < ApplicationController
     unless Game.valid_params?(params)
       redirect "/games/new?error=invalid game"
     end
-    @game = Game.create(:name => params["name"])
-    @game.players = params["players"]
-    @game.device_id = params["device_id"]
+    @game = Game.create(:name => params["name"], :players => params["players"], :device_id => params["device_id"])
     @game.save
     redirect "/games"
   end
