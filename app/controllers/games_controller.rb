@@ -16,8 +16,8 @@ class GamesController < ApplicationController
     redirect_if_not_logged_in
     @game = Game.find(params[:id])
     @error_message = params[:error]
-    if @game = current_user.games.find_by(params[:id])
-    erb :'games/edit'
+    if current_user.id == @game.device.user_id
+      erb :'games/edit'
     else
       redirect '/games'
     end
