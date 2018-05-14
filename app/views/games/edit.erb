@@ -9,7 +9,7 @@
 
   <label> Which device is this game on? </label> <br>
   <label> Devices: </label>
-    <% Device.all.each do |device| %>
+    <% current_user.devices.each do |device| %>
     <%= device.name %> <input id="<%= device.id %>" type="checkbox" name="device_id" value="<%= device.id %>"><br>
     <% end %>
   </select>
