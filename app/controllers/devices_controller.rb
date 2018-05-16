@@ -16,7 +16,7 @@ class DevicesController < ApplicationController
     redirect_if_not_logged_in
     @error_message = params[:error]
     @device = Device.find(params[:id])
-    if current_user.id == @device.id
+    if current_user.id == @device.user_id
       erb :'devices/edit'
     else
       redirect '/devices'

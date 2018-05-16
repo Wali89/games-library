@@ -1,4 +1,6 @@
-<h1>Edit <%= @device.name %></h1>
+<h1>Edit <%= @device.name %></h1> <br>
+Beware that deleting a device will also delete the games that are on the device!! <br>
+<a href="/devices/<%= @device.id %>/delete">Delete Device!</a>
 
 <form action="/devices/<%= @device.id %>" method="POST">
   <label> Device Name </label>
