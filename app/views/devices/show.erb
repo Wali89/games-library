@@ -1,7 +1,8 @@
 <%= @device.name %><br />
-
+<%= @device.company %><br />
 <ul>
   <% @device.games.each do |game| %>
     <li><a href="/games/<%= game.id %>"><%= game.name %> </a></li>
   <% end %>
 </ul>
+<a href="/devices/<%= @device.id %>/edit">Edit</a>

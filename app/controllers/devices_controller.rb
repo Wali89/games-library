@@ -30,7 +30,7 @@ class DevicesController < ApplicationController
       redirect "/devices/#{@device.id}/edit?error=invalid device"
     end
     @device.update(params.select{|k|k=="name" || k=="company"})
-
+    redirect "/devices/#{@device.id}"
   end
 
   get "/devices/:id" do
