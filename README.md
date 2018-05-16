@@ -6,6 +6,6 @@ This simple Sinatra Application is called Games Library. The purpose of this is 
 
 ## To Install
 git clone https://github.com/Wali89/sinatra-cms-app-assessment-v-000.git
-$ bundle intall
+$ bundle intall 
 $ rake db:migrate
 $ shotgun
