@@ -50,4 +50,14 @@ class DevicesController < ApplicationController
     redirect "/devices"
   end
 
+  get "/devices/:id/delete" do
+    redirect_if_not_logged_in
+    @device = Device.find(params[:id])
+    @device.games.each do |game|
+      game.delete
+    end
+    @device.delete
+    redirect "/devices"
+  end
+
 end

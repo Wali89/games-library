@@ -49,4 +49,10 @@ class GamesController < ApplicationController
     redirect "/games"
   end
 
+  get "/games/:id/delete" do
+    redirect_if_not_logged_in
+    @game = Game.find(params[:id])
+    @game.delete
+    redirect "/games"
+  end
 end

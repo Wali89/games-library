@@ -10,7 +10,7 @@
   <input type="integer" name="players"> </br>
 
 
-  <label> Which device is the game on? </label>
+  <label> Which device is the game on? </label> <br>
     <% current_user.devices.each do |device| %>
     <%= device.name %> <input id="<%= device.id %>" type="checkbox" name="device_id" value="<%= device.id %>"><br>
     <% end %>
